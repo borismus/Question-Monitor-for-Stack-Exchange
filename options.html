@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>StackTrack Options</title>
+    <link rel="stylesheet" type="text/css" href="res/style.css" />
+    <link rel="stylesheet" type="text/css" href="options.css" />
+  </head>
+
+  <body>
+    <div class="kd-settings visible demo" style="clear: both;">
+
+      <div class="kd-settings-hd" style="position: relative;">
+        <div class="kd-formbuttons">
+          <a id="submit" class="kd-button kd-button-submit primary" style="-webkit-user-select: none; ">Save</a>
+          <a id="cancel" class="kd-button" style="-webkit-user-select: none; ">Cancel</a>
+        </div>
+        <h1>StackTrack settings</h1>
+
+        <div class="kd-butterbar" id="butterbar">
+          <p></p>
+        </div>
+
+      </div>
+
+      <div class="kd-settings-content">
+
+        <div class="kd-settings-pane general selected">
+          <div class="kd-settings-pane-section">
+            <div class="setting-label">
+              Currently tracking
+            </div>
+            <div class="setting">
+              <div id="tags">
+              </div>
+            </div>
+          </div>
+          <div class="kd-settings-pane-section">
+            <div class="setting-label">
+              Add tags<br/>
+              <span class="info">
+                (semicolon delimited list of tags questions must have)
+              </span>
+            </div>
+            <div class="setting">
+              <div class="column">
+              <label for="tag">Tag:</label><br/>
+              <input type="text" name="tag" id="tag">
+              </div>
+              <div class="column">
+              <label for="network">Network:</label><br/>
+              <select name="network" id="network">
+              </select>
+              </div>
+              <div class="column">
+                <a id="add" class="kd-button" style="-webkit-user-select:
+                  none;">Add tag</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  <script src="js/options/options.js"></script>
+</body>
+</html>

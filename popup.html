@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+  <title>Popup</title>
+  <link rel="stylesheet" type="text/css" href="popup.css" />
+  <link rel="stylesheet" type="text/css" href="res/style.css" />
+</head>
+
+<body>
+  <div class="kd-appbar">
+    <div id="name" class="kd-appname">StackTrack</div>
+    <div class="kd-buttonbar left">
+      <a id="archive" class="kd-button left" style="-webkit-user-select: none;">Archive</a>
+      <a id="refresh" class="kd-button mid" style="-webkit-user-select: none;">
+        <img src="res/refresh.svg" />
+      </a>
+      <a id="options" class="kd-button right" style="-webkit-user-select: none;">
+        <img src="res/settings.svg" />
+      </a>
+    </div>
+    <div class="kd-buttonbar right paginator">
+      <span class="kd-count">1-25 of 240</span>
+      <a id="prev" class="kd-button left small" style="-webkit-user-select: none; "><img src="res/page_left.svg" width="21" height="21" alt="Page Prev"></a>
+      <a id="next" class="kd-button right small" style="-webkit-user-select: none; "><img src="res/page_right.svg" width="21" height="21" alt="Page Next"></a>
+    </div>
+
+    <div class="kd-butterbar" id="butterbar">
+      <p></p>
+    </div>
+  </div>
+
+  <section id="questions"></section>
+
+  <div id="kd-tooltip"><span id="tooltip-text">ohi</span> <span class="pointer"></span></div>
+
+  <script src="js/popup/popup.js"></script>
+  <script src="js/popup/question_list.js"></script>
+  <script src="js/popup/question.js"></script>
+  <script>
+    var popup = new st.popup.PopupView();
+    popup.render();
+  </script>
+</body>
+
+</html>

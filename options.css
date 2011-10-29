@@ -1,0 +1,19 @@
+form {
+  margin-left: 44px;
+}
+.kd-settings { width: 100% !important; }
+.kd-settings-content { margin-left: 0px !important; width: 100% !important; }
+.kd-settings-pane.general.selected {
+  max-height: inherit !important; height: 100% !important; }
+
+.column { float: left; margin-right: 50px; width: 200px;}
+.column li { height: 18px; }
+.column li:hover .cancel-button { display: block; }
+.column li .cancel-button { display: none; }
+
+label { display: block; }
+.tag { float: left; }
+.cancel-button img { float: left; margin-top: 3px; margin-left: 5px; width: 12px; border: 1px solid #999; }
+
+/* move the add button down */
+#add { margin-top: 20px; }

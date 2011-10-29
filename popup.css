@@ -1,0 +1,42 @@
+body { width: 500px; overflow: hidden; }
+/**
+ * Kennedy overrides.
+ */
+.kd-appname { margin-left: 14px !important; width: 100px !important; color: green !important;}
+.kd-button { min-width: 35px !important; }
+.kd-buttonbar.right { margin-right: 14px !important; }
+.kd-select .kd-disclosureindicator {
+  background: important url('disclosure_arrow_dk_grey_up_down.png');
+}
+
+/**
+ * The list itself.
+ */
+
+ul { padding: 0; list-style-type: none; }
+
+#questions { padding-bottom: 10px; }
+
+.question { padding: 8px 0; border-bottom: 1px #E5E5E5 solid; overflow: hidden; cursor: pointer; }
+.question .more { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.question .name { font-weight: bold; white-space: nowrap; font-color: black; overflow: hidden; text-overflow: ellipsis; }
+.question .tags { float: left; }
+.question.read { background: #F5F5F5; }
+.question.read .name { font-weight: normal; }
+
+#page-read { float: right; margin: 8px 14px 4px 0; }
+
+.numbers { float: left; width: 36px; text-align: right; font-size: 22px; padding: 10px 10px 0 0; cursor: default; }
+.up_vote_count, .view_count, .answer_count { display: none; }
+.numbers > .visible { position: relative; display: block; }
+
+/* Show mark read/unread checkbox when hovering */
+.question .buttons { display: none; float: right; margin: 7px 3px 5px 0; }
+.question:hover .buttons { display: block; }
+
+/* Show only read button if the post is read */
+.question .buttons .mark-read { display: block; }
+.question .buttons .mark-unread { display: none; }
+
+.question.read .buttons .mark-read { display: none !important; }
+.question.read .buttons .mark-unread { display: block !important; }
