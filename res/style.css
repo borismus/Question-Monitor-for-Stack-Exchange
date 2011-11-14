@@ -1741,3 +1741,69 @@ settings window
 	margin-right: 5px;
 	bottom: -1px;
 }
+
+/*------------------------------------------------------------------
+butter bar
+------------------------------------------------------------------*/
+.kd-butterbar {
+	position: absolute;
+	text-align:center;
+	bottom:0;
+	padding:0 16px;
+	background:#F9EDBE;
+	border:1px solid #F0C36D;
+	margin-bottom:-15px;
+	left:-1000%;
+	
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	
+	margin-left:-190px;
+	opacity:0;
+	
+	-webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+	
+	-webkit-transform:scale(.2);
+	-moz-transform:scale(.2);
+	-o-transform:scale(.2);
+	transform:scale(.2);
+	
+	-webkit-transition: opacity 1s, -webkit-transform 0 linear 1s, left 0 linear 1s;
+	-moz-transition: opacity 0.130s;
+	-o-transition: opacity 0.130s;
+	transition: opacity 0.130s;
+}
+.kd-butterbar.shown{
+	opacity:1;
+	left:50%;	
+	-webkit-transform:scale(1.00);
+	
+	-webkit-transition: all 0.130s, left 0 linear 0;
+	-moz-transition: all 0.218s;
+	-o-transition: all 0.218s;
+/*	transition: all 0.218s, left 0;*/
+}
+.kd-butterbar p{
+	margin-bottom:0;
+	line-height:29px;
+	font-size:11px;
+}
+
+.kd-butterbar a{
+	color:#333;
+	text-decoration:underline;
+}
+.kd-butterbar a:hover{
+	color:#202020;
+}
+
+.kd-butterbar.mini{
+	margin-bottom:-5px;
+}
+.kd-butterbar.mini p{
+	line-height:19px;
+}
+
