@@ -1,8 +1,9 @@
-// Copyright 2011 Google Inc. All Rights Reserved.
+// Copyright 2014 Google Inc. All Rights Reserved.
 
 /**
  * @fileoverview View logic for the Stack Track popup page.
  * @author smus@google.com (Boris Smus)
+ * @author e.bidelman@google.com (Eric Bidelman)
  */
 
 // Get background page.

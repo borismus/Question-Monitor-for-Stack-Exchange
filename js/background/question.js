@@ -1,9 +1,11 @@
-// Copyright 2011 Google Inc. All Rights Reserved.
+// Copyright 2014 Google Inc. All Rights Reserved.
 
 /**
  * @fileoverview The Question model layer for the StackTrack extension.
  * @author smus@google.com (Boris Smus)
+ * @author e.bidelman@google.com (Eric Bidelman)
  */
+
 var st = st || {};
 
 
@@ -57,10 +59,10 @@ st.Question = function(params, collection) {
   this.questionId = params.question_id;
 
   /**
-   * Relative URL where the question resides.
+   * URL where the question resides.
    * @type {string}
    */
-  this.questionAnswersUrl = params.question_answers_url;
+  this.questionAnswersUrl = params.link
 
   /**
    * Information about the user who asked the question.
@@ -104,7 +106,8 @@ st.Question.prototype.mainTag = null;
  * @return {string} Network specific URL to the question.
  */
 st.Question.prototype.getURL = function() {
-  return 'http://' + this.mainTag.getNetwork().root + this.questionAnswersUrl;
+  //return 'http://' + this.mainTag.getNetwork().root + this.questionAnswersUrl;
+  return this.questionAnswersUrl;
 };
 
 /**

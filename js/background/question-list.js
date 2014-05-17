@@ -1,8 +1,9 @@
-// Copyright 2011 Google Inc. All Rights Reserved.
+// Copyright 2014 Google Inc. All Rights Reserved.
 
 /**
  * @fileoverview The QuestionList model layer for the StackTrack extension.
  * @author smus@google.com (Boris Smus)
+ * @author e.bidelman@google.com (Eric Bidelman)
  */
 var st = st || {};
 
@@ -11,17 +12,16 @@ var st = st || {};
  * Key of the StackTrack application.
  * @type {string}
  */
-st.API_KEY = 'rVsFMHFCgUKDbmeYIpeaGA';
+st.API_KEY = 'dHa9ci5uMP1DpelMw*c**Q((';
 
 
 /**
  * Template to get unanswered questions using the QuestionList.
  * @type {string}
  */
-st.UNANSWERED_URL = 'http://api.{{root}}/1.1/questions/' +
-    'unanswered/?tagged={{tagged}}&pagesize={{pagesize}}' +
+st.UNANSWERED_URL = 'https://api.stackexchange.com/2.2/questions/' +
+    'unanswered/?site={{root}}&tagged={{tagged}}&pagesize={{pagesize}}' +
     '&jsonp=st.callbacks.{{callback}}&key={{key}}';
-
 
 /**
  * Default number of questions to get initially.
@@ -221,8 +221,8 @@ st.QuestionList.prototype.fetchTagQuestions_ = function(tag, quantity) {
  */
 st.QuestionList.prototype.parseResults_ = function(data, tag) {
   var didCountChange = false;
-  for (var i = 0; i < data.questions.length; i++) {
-    var q = new st.Question(data.questions[i], this);
+  for (var i = 0; i < data.items.length; i++) {
+    var q = new st.Question(data.items[i], this);
     // See if an existing StackOverflowQuestion with same doesn't exist, or this
     // one is newer, update.
     var existingQ = this.questions_[q.questionId];
