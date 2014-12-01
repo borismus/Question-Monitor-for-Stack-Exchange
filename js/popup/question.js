@@ -248,7 +248,7 @@ st.popup.QuestionView.prototype.renderTemplate_ = function(template, data) {
   var out = template;
   for (var key in data) {
     var value = data[key];
-    //Handle un-escaped values, where appropriate
+    // Handle un-escaped values, where appropriate.
     out = out.replace('{{{' + key + '}}}', value);
     // Strip the markup from the key (if present).
     var tmp = document.createElement('div');
