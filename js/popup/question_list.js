@@ -126,7 +126,8 @@ st.popup.QuestionListView.prototype.renderPaginator_ = function() {
  * @param {number} page The page to go to.
  */
 st.popup.QuestionListView.prototype.setPage = function(page) {
-  var lastPage = Math.ceil(this.questionList.getQuestionCount() /
+  var lastPage = Math.ceil((this.questionList.getQuestionCount(st.State.READ) +
+                           this.questionList.getQuestionCount(st.State.NORMAL)) /
                            st.popup.PAGE_RESULTS) - 1;
   if (page < 0) {
     this.page = 0;
