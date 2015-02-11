@@ -9,12 +9,64 @@ test('Ensure that question set is retained', function() {
   ];
   var ql = new st.QuestionList();
   ql.setTags(tags);
-  equals(ql.tags.length, 3, 'Correct number of tags');
-  equals(ql.tags[0].name, 'google-chrome', 'Tag names do match');
-  equals(ql.tags[0].getNetwork().root, 'stackoverflow.com',
+  equal(ql.tags.length, 3, 'Correct number of tags');
+  equal(ql.tags[0].name, 'google-chrome', 'Tag names do match');
+  equal(ql.tags[0].getNetwork().root, 'stackoverflow.com',
       'Root URLs match');
 });
 
+
+test('Ensure that question titles are escaped correctly', function(){
+  //questionData from /2.2/questions/26227103?order=desc&sort=activity&site=stackoverflow
+  var questionData = {
+      "tags": [
+        "html",
+        "mysql",
+        "sql",
+        "sql-server",
+        "coldfusion"
+      ],
+      "owner": {
+        "reputation": 45,
+        "user_id": 3966081,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/0c50e0796b30018d74703a3f4c997004?s=128&d=identicon&r=PG&f=1",
+        "display_name": "Grimdari",
+        "link": "http://stackoverflow.com/users/3966081/grimdari"
+      },
+      "is_answered": true,
+      "view_count": 96,
+      "accepted_answer_id": 26228641,
+      "answer_count": 2,
+      "score": 1,
+      "last_activity_date": 1413053818,
+      "creation_date": 1412643854,
+      "last_edit_date": 1412696446,
+      "question_id": 26227103,
+      "link": "http://stackoverflow.com/questions/26227103/sql-query-inner-join-tables-print-to-html-select-tag",
+      "title": "SQL query inner join tables, print to HTML &lt;select&gt; tag",
+      "mainTag":{
+        "network":"Stack Overflow",
+        "name":"ColdFusion"
+      }
+  },
+  mockParentView = {shouldShowTags:function(){return true;}},
+  //this.state = st.State.NORMAL;
+  //this.collection = collection;  
+  question = new st.popup.QuestionView(questionData,mockParentView),
+  el=question.render(),
+  pattern=/<select>/,
+  HTMLMatches=el.innerHTML.match(pattern),
+  textMatches=el.innerText.match(pattern);
+  
+  console.log(el.innerHTML);
+  console.log(el.innerText);
+
+  //Assert that there were no <select>s in the HTML
+  ok(!HTMLMatches,'<select> tag from Title is appearing in rendered HTML');
+  //Assert that <select> was rendered as text
+  ok(textMatches.length===1,'<select> tag from Title is NOT appearing in rendered text');
+});
 
 // Test
 // Get a list of 5 unanswered questions from StackOverflow with the
@@ -32,7 +84,7 @@ asyncTest('Test question list limit', function() {
       ok(parseInt(questions[i].questionId) > 0, 'Valid ID');
       count += 1;
     }
-    equals(count, 5, 'Number of questions matches');
+    equal(count, 5, 'Number of questions matches');
   });
 });
 

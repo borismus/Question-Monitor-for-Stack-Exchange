@@ -41,6 +41,25 @@ st.popup.PopupView = function() {
       });
     })(this.handlers[id]);
   }
+  //Add keyboard navigation through questions
+  document.addEventListener('keyup',function(e){
+    if(e.keyCode===37){ //left
+      ctx.handlers.prev.call(ctx);
+    }
+    if(e.keyCode===39){ //right
+      ctx.handlers.next.call(ctx);
+    }
+    if(e.keyCode===82 && e.ctrlKey){ //Ctrl-R - mark all as read
+      ctx.questionList.markRead(ctx.questionListView.getQuestionsOnPage());
+      ctx.questionListView.render();
+    }
+    if(e.keyCode===65 && e.ctrlKey){ //Ctrl-A - Archive all
+      ctx.handlers.archive.call(ctx);
+    }
+    if(e.keyCode===79 && e.ctrlKey){ //Ctrl-O - Options
+      ctx.handlers.options.call(ctx);
+    }
+  });
 };
 
 /**

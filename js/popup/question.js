@@ -27,7 +27,7 @@ st.popup.QUESTION_TEMPLATE =
     '<a class="kd-button mini mark-unread"' +
         'style="-webkit-user-select: none;">mark unread</a>' +
   '</div>' +
-  '<div class="name">{{title}}</div>' +
+  '<div class="name">{{{title}}}</div>' +
   '<div class="more">' +
     '<span class="tags">{{tags}}</span>&nbsp;' +
     '<span class="creation_date">Asked {{creationDate}}</span>&nbsp;by&nbsp;' +
@@ -248,6 +248,8 @@ st.popup.QuestionView.prototype.renderTemplate_ = function(template, data) {
   var out = template;
   for (var key in data) {
     var value = data[key];
+    // Handle un-escaped values, where appropriate.
+    out = out.replace('{{{' + key + '}}}', value);
     // Strip the markup from the key (if present).
     var tmp = document.createElement('div');
     tmp.innerHTML = value;
