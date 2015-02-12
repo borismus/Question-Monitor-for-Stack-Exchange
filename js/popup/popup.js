@@ -41,6 +41,17 @@ st.popup.PopupView = function() {
       });
     })(this.handlers[id]);
   }
+
+  /* Keyevent for prev & next page navigation */
+  document.addEventListener('keyup',function(e){
+    console.log(e.keyCode);
+    if(e.keyCode===37){
+      ctx.handlers.prev.call(ctx);
+    }
+    if(e.keyCode===39){
+      ctx.handlers.next.call(ctx);
+    }
+  });
 };
 
 /**
