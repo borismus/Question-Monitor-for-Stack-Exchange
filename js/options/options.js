@@ -25,9 +25,9 @@ st.opt.NETWORK_TEMPLATE = '<h2>{{networkName}}</h2>' +
  * @constructor
  * Main view for the options page.
  */
-st.opt.OptionsView = function() {
+st.opt.OptionsView = function(tags) {
   // Persist these tags.
-  this.tags = this.getSavedTags_();
+  this.tags = tags;
   // Draw the view.
   this.render();
 
@@ -83,7 +83,12 @@ st.opt.OptionsView.prototype.save = function() {
     alert('You must specify at least one tag');
     return;
   }
-  localStorage.tags = JSON.stringify(this.tags);
+
+  var stringifiedTags = JSON.stringify(this.tags);
+  chrome.storage.sync.set({tags: stringifiedTags}, function() {
+    console.log('Value is set to ' + stringifiedTags);
+});
+
   questionList.setTags(this.tags);
   questionList.reset();
   questionList.update();
@@ -125,15 +130,6 @@ st.opt.OptionsView.prototype.removeTag = function(index) {
 
 /**
  * @private
- * Get the tags that were saved.
- * @return {array} Array of tags that we're monitoring.
- */
-st.opt.OptionsView.prototype.getSavedTags_ = function() {
-  return JSON.parse(localStorage.tags || '[]');
-};
-
-/**
- * @private
  * Render the contents of the select element.
  */
 st.opt.OptionsView.prototype.renderDropdown_ = function() {
@@ -170,4 +166,6 @@ st.opt.OptionsView.prototype.getOrRenderNetwork_ = function(networkId) {
   return $network;
 };
 
-var optionsView = new st.opt.OptionsView();
+chrome.storage.sync.get(['tags'], result => {
+  var optionsView = new st.opt.OptionsView(JSON.parse(result.tags || '[]'));
+});
