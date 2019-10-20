@@ -18,7 +18,8 @@
     "default_popup": "popup.html"
    },
   "permissions": [
-    "https://api.stackexchange.com/"
+    "https://api.stackexchange.com/",
+    "storage"
   ],
   "content_security_policy": "script-src 'self' https://api.stackexchange.com; object-src 'self'"
 }

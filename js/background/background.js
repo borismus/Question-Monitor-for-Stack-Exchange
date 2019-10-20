@@ -5,17 +5,20 @@
  * @author smus@google.com (Boris Smus)
  */
 var questionList = new st.QuestionList();
-var tags = JSON.parse(localStorage.tags || '[]');
-if (!tags.length) {
-  // Open the options page
-  chrome.tabs.create({url: 'options.html'});
-}
-questionList.setTags(tags);
-questionList.registerCountCallback(function() {
-  var count = questionList.getQuestionCount();
-  chrome.browserAction.setBadgeText({
-    text: (count > 0 ? count.toString() : '')
+
+chrome.storage.sync.get(['tags'], result => {
+  var tags = JSON.parse(result.tags || '[]');
+  if (!tags.length) {
+    // Open the options page
+    chrome.tabs.create({url: 'options.html'});
+  }
+  questionList.setTags(tags);
+  questionList.registerCountCallback(function() {
+    var count = questionList.getQuestionCount();
+    chrome.browserAction.setBadgeText({
+      text: (count > 0 ? count.toString() : '')
+    });
   });
+  questionList.update();
+  questionList.scheduleUpdates();
 });
-questionList.update();
-questionList.scheduleUpdates();
